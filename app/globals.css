@@ -2,4 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+.fill-white{
+    fill:#fff
+}
 
+.bgHero {
+    background-image: url('/_next/static/media/LAUNCHES_Starlink_SLC_40.965e1358.jpg');
+}
+
+.bar {
+    top: 3px;
+    left: 0;
+    background-color: #fff;
+    width: 100%;
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+    height: 2px
+}

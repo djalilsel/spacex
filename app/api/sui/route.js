@@ -14,7 +14,6 @@ export async function POST ( request ) {
 
     const requestData = await request.json()
     const { hey } = requestData
-    const hello = "hello"
 
     return NextResponse.json({ type : "post request", data: hey})
 
