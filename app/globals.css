@@ -10,6 +10,7 @@
     background-image: url('/_next/static/media/LAUNCHES_Starlink_SLC_40.965e1358.jpg');
 }
 
+
 .bar {
     top: 3px;
     left: 0;
@@ -20,10 +21,9 @@
     height: 2px
 }
 .ul-animation{
-        display: block;
-        position: relative;
-        padding: 0 0;
-        overflow: hidden;
+    position: relative;
+    padding: 0 0;
+    overflow: hidden;
 }
 
 .ul-animation::after {
@@ -54,6 +54,32 @@
     -webkit-transform-origin: left center;
     transform-origin: left center
 }
+
+.open1 {
+    translate: none; 
+    rotate: none; 
+    scale: none;
+    transform: translate(0px, 4px) rotate(45deg);
+}
+.open2 {
+    translate: none; 
+    rotate: none; 
+    scale: none; 
+    transform: translate(8px, 0px); 
+    width: 0%;
+}
+.open3 {
+    translate: none;
+    rotate: none; 
+    scale: none;
+    transform: translate(0px, -4px) rotate(-45deg);
+}
+
+#menu-bg {
+    -webkit-transition: color 1s cubic-bezier(.25,1,.25,1),background-color 1s cubic-bezier(.25,1,.25,1);
+    transition: color 1s cubic-bezier(.25,1,.25,1),background-color 1s cubic-bezier(.25,1,.25,1)
+}
+
 
   
 
