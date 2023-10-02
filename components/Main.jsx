@@ -9,7 +9,7 @@ const Main = ({ bgImage, title, missionTitle}) => {
       <div className={`${ddibBold.className} bg-no-repeat bg-center bg-cover h-screen relative`} style={{ backgroundImage: `url(/_next/static/media/${bgImage})` }}>
         <div className='absolute bottom-0 left-0 w-full h-fit flex justify-center xl:px-[300px] px-[50px] py-[140px]'>
           <div className='w-screen max-w-[1400px] flex justify-center'>
-            <div className='w-[420px] h-fit flex flex-col leading-[36px] text-white'>
+            <div className='w-fit max-w-[520px] h-fit flex flex-col leading-[36px] text-white'>
               <span className={`${ddib.className} text-[20px]`}>
                 {title}
               </span>
@@ -24,6 +24,11 @@ const Main = ({ bgImage, title, missionTitle}) => {
             </div> 
             <div className='flex-1'></div>
           </div>
+        </div>
+        <div className='absolute bottom-16 left-1/2 '>
+          <svg width="30px" height="20px" aria-label="more content below">
+            <path fillOpacity="0" stroke="#ffffff" stroke-width="2px" d="M2.000,5.000 L15.000,18.000 L28.000,5.000 "></path>
+          </svg>
         </div>
       </div>
     );
