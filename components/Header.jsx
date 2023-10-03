@@ -18,6 +18,7 @@ const Header = () => {
     const [menubg, setMenubg] = useState({})
     const [closemenu, setCloseMenu] = useState({})
     const [toggleMenuElements, setToggleMenuElements] = useState({})
+    const [toggleMenuScroll, setToggleMenuScroll] = useState({})
 
     const hamburger = {
         animation1: {
@@ -130,15 +131,94 @@ const Header = () => {
         
     }
 
+
+
     const [matches, setMatches] = useState(false);
+    const [oldScroll, setOldScroll] = useState(0)
+
+    const scrollDown = () => {
+        let hideMenuScroll
+        // if(window.scrollY >= window.innerHeight){
+        //     hideMenuScroll = {
+        //         initail: {
+        //             opacity: 1,
+        //             height: 100,
+        //             backgroundColor: "transparent"
+        //         },
+        //         animate: {
+        //             opacity: 0,
+        //             height: 0,
+        //             backgroundColor: "#000"
+        //         }
+        //     }
+        // } else {
+            hideMenuScroll = {
+                initail: {
+                    opacity: 1,
+                    height: 100
+                },
+                animate: {
+                    opacity: 0,
+                    height: 0
+                }
+            }
+        // }
+        setToggleMenuScroll(hideMenuScroll)
+    }
+    const scrollUp = () => {
+        let showMenuScroll
+        if(window.scrollY < window.innerHeight){
+            showMenuScroll = {
+                initail: {
+                    backgroundColor: "#000"
+                },
+                animate: {
+                    backgroundColor: "transparent"
+                }
+            }
+        } else {
+            showMenuScroll = {
+                initail: {
+                    opacity: 0,
+                    height: 0,
+                    backgroundColor: "transparent"
+                },
+                animate: {
+                    opacity: 1,
+                    height: 100,
+                    backgroundColor: "#000"
+                }
+            }
+        }
+        setToggleMenuScroll(showMenuScroll)
+    }
+
+
+    const controleScroll = () => {
+        if(window.scrollY > (window.innerHeight / 8) && window.scrollY > oldScroll){
+            scrollDown()
+        } else {
+            scrollUp()
+        }
+        setOldScroll(window.scrollY)
+    }
 
     useEffect(() => {
-        
+        window.addEventListener("scroll", controleScroll)
         window.addEventListener("scroll", () => {
             if(menu){
                 toggleMenu()
             }
         })
+
+        return () => {
+            window.removeEventListener("scroll", () => {
+                if(menu){
+                    toggleMenu()
+                }
+            })
+            window.removeEventListener("scroll", controleScroll)
+        }
     })
 
     useEffect(() => {
@@ -175,9 +255,13 @@ const Header = () => {
         setMenu(!menu)
     } 
     return (
-        <div className={`${ddib.className} fixed top-0 pl-36 z-20 w-full text-white text-[14px]`}>
-            <div className=' justify-center flex w-full h-full'>
-                <div className='top-0 w-full flex justify-end'>
+        <div id='header' className={`${ddib.className} fixed top-0 z-20 w-full text-white text-[14px]`}>
+            <div className=' justify-center flex w-full h-full '>
+                <motion.div className='pl-36  top-0 w-full flex justify-end '
+                    variants={toggleMenuScroll}
+                    initial="initail"
+                    animate="animate"
+                >
                     <div className=' left-0 h-[100px] w-screen max-w-[1400px] flex justify-center items-center gap-9 flex-1 px-10 mx-auto'>
                         <Link href="/">
                             <svg className='relative top-[-6px] cursor-pointer' width="200" x="0px" y="0px" viewBox="0 0 400 50">
@@ -240,7 +324,7 @@ const Header = () => {
                                     ></motion.div>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>    
             <motion.div id='closebg' className='hidden absolute top-0 right-0 w-full h-screen bg-[#00000050] ' onClick={toggleMenu}
                         variants={closemenu}
