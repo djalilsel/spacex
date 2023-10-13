@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react';
 import { cubicBezier } from 'framer-motion';
-
 const ddib = localFont({ src: '../assets/D-DIN-Bold.woff2'})
 const ddibRegular = localFont({ src: '../assets/D-DIN.woff2'})
 
@@ -97,6 +96,8 @@ const Header = () => {
         width: 0
     }
     const easing = cubicBezier(0.24, 0.97, 0.25, 0.89)
+    const easingProgress = easing(0.5)
+
     const showMenuElements = {
         initail: {
             opacity: 0,
@@ -131,38 +132,21 @@ const Header = () => {
         
     }
 
-
-
     const [matches, setMatches] = useState(false);
     const [oldScroll, setOldScroll] = useState(0)
 
     const scrollDown = () => {
-        let hideMenuScroll
-        // if(window.scrollY >= window.innerHeight){
-        //     hideMenuScroll = {
-        //         initail: {
-        //             opacity: 1,
-        //             height: 100,
-        //             backgroundColor: "transparent"
-        //         },
-        //         animate: {
-        //             opacity: 0,
-        //             height: 0,
-        //             backgroundColor: "#000"
-        //         }
-        //     }
-        // } else {
-            hideMenuScroll = {
-                initail: {
-                    opacity: 1,
-                    height: 100
-                },
-                animate: {
-                    opacity: 0,
-                    height: 0
-                }
+        const hideMenuScroll = {
+            initail: {
+                opacity: 1,
+                height: 100
+            },
+            animate: {
+                opacity: 0,
+                height: 0,
             }
-        // }
+        }
+
         setToggleMenuScroll(hideMenuScroll)
     }
     const scrollUp = () => {
@@ -170,10 +154,10 @@ const Header = () => {
         if(window.scrollY < window.innerHeight){
             showMenuScroll = {
                 initail: {
-                    backgroundColor: "#000"
+                    backgroundColor: "#000",
                 },
                 animate: {
-                    backgroundColor: "transparent"
+                    backgroundColor: "rgba(0, 0, 0, 0)"
                 }
             }
         } else {
@@ -181,7 +165,7 @@ const Header = () => {
                 initail: {
                     opacity: 0,
                     height: 0,
-                    backgroundColor: "transparent"
+                    backgroundColor: "rgba(0, 0, 0, 0)"
                 },
                 animate: {
                     opacity: 1,
