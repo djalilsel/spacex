@@ -79,7 +79,7 @@ const Main = ({ bgImage, title, missionTitle }) => {
   return (
     <div
       className={`${ddibBold.className} bg-no-repeat bg-center bg-cover h-screen relative`}
-      style={{ backgroundImage: `url(/_next/static/media/${bgImage})` }}
+      style={{ backgroundImage: `url(${bgImage.src})` }}
     >
       <div className="absolute bottom-0 left-0 w-full h-fit flex justify-center xl:px-[300px] px-[50px] py-[140px]">
         <div className="w-screen max-w-[1400px] flex justify-center">

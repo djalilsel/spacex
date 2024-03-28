@@ -1,9 +1,27 @@
-import { NextResponse } from "next/server"
+import { NextResponse } from "next/server";
 
-export async function GET () {
-    console.log("get request");
-    const hello = "hello"
-
-    return NextResponse.json({ type : "get request", data: hello})
-
+const data = [
+  {
+    title: "UPCOMING LAUNCH",
+    missionTitle: "STARLINK MISSION",
+  },
+  {
+    title: "RECENT LAUNCH",
+    missionTitle: "STARLINK MISSION",
+  },
+  {
+    title: "RECENT LAUNCH",
+    missionTitle: "STARLINK MISSION",
+  },
+  {
+    title: "COMPLETED MISSION",
+    missionTitle: "DRAGON AND CREW-6 RETURN TO EARTH",
+  },
+  {
+    title: "",
+    missionTitle: "STARSHIP FLIGHT TEST",
+  },
+];
+export async function GET() {
+  return NextResponse.json({ data });
 }

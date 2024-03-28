@@ -245,7 +245,7 @@ const Header = () => {
     >
       <div className=" justify-center flex w-full h-full ">
         <motion.div
-          className="pl-36  top-0 w-full flex justify-end "
+          className="pl-36 top-0 w-full flex justify-end "
           variants={toggleMenuScroll}
           initial="initail"
           animate="animate"
